@@ -1,0 +1,59 @@
+/* Contenedor principal */
+.granContenedorNivel {
+    width: 100%;
+    transition: all 0.4s ease;
+}
+
+/* Estado SIN pistas (inicio) */
+.sin-pista {
+    display: flex;
+    justify-content: center;
+}
+
+/* Estado CON pistas */
+.con-pista {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Contenedor central del nivel */
+.contenedorNivel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Panel de pistas (derecha) */
+.pistas-nivel {
+    height: 13rem;
+    margin-top: 120px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+}
+
+.pistas-nivel p{
+    margin-bottom:3rem ;
+    font-size: 1rem;
+    
+}
+
+/* Imagen */
+img {
+    width: 240px;
+    height: auto;
+    border-radius: 10px;
+    filter: blur(15px);
+    transition: filter 0.3s ease;
+}
+
+/* Botones */
+.botones-nivel {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}

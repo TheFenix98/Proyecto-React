@@ -1,0 +1,32 @@
+.contenedorMenu {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    gap: 20px;
+}
+
+.titulo {
+    font-size: 3rem;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #ff5733;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.botones {
+    width: 200px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    padding: 10px 0;
+    background: #ff914d;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.botones:hover {
+    background-color: #ffbd69;
+    transform: scale(1.05);
+}

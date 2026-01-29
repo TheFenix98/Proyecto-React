@@ -1,0 +1,24 @@
+.contenedorNiveles {
+  display: grid;
+  width: 70%;
+  margin: auto;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardNivel {
+  text-align: center;
+}
+
+.imagenNivel {
+  width: 150px;
+  cursor: pointer;
+  filter: blur(10px);
+  transition: 0.3s ease;
+}
+
+.imagenNivel:hover {
+  transform: scale(1.2);
+}

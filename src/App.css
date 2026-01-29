@@ -1,0 +1,14 @@
+.fondo-menu {
+  background: linear-gradient(#2a5298, #1cb5e0);
+  min-height: 100dvh;
+}
+
+.fondo-nivel {
+  background: linear-gradient(#14a18d, #5aee75);
+  min-height: 100dvh;
+}
+
+.fondo-seleccion {
+  background: linear-gradient(rgb(201, 10, 10), rgb(229, 229, 23) );
+  min-height: 100dvh;
+}
