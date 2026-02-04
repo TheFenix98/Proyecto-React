@@ -1,5 +1,9 @@
 import Swal from 'sweetalert2';
 import "./Menu.css";
+import { useNavigate } from 'react-router-dom';
+
+const Menu = () => {
+const navigate= useNavigate();
 
 const testAlert = () => {
   Swal.fire({
@@ -9,19 +13,16 @@ const testAlert = () => {
     confirmButtonText: 'Entendido'
   });
 }
-const Menu = ({ empezarJuego, irASeleccionNivel }) => {
-
-
 
   return (
     <div className="contenedorMenu">
       <h1 className='titulo'>Juego Pelis</h1>
 
-      <button className= "botones btnJugar" onClick={empezarJuego}>
+      <button className= "botones btnJugar" onClick={() => {navigate('/nivel');}}>
         Jugar
       </button>
 
-      <button className='botones btnSeleccionarNivel' onClick={irASeleccionNivel}>
+      <button className='botones btnSeleccionarNivel' onClick={() => {navigate('/seleccion');}}>
         Seleccionar Nivel
       </button>
 
@@ -30,6 +31,6 @@ const Menu = ({ empezarJuego, irASeleccionNivel }) => {
       </button>
     </div>
   )
-}
+};
 
-export default Menu
+export default Menu ;

@@ -43,11 +43,18 @@
 }
 
 /* Imagen */
-img {
+.imagen-nivel {
     width: 240px;
     height: auto;
     border-radius: 10px;
     filter: blur(15px);
+    transition: filter 0.3s ease;
+}
+.imagen-nivel-correcta {
+    width: 240px;
+    height: auto;
+    border-radius: 10px;
+    filter: blur(0);
     transition: filter 0.3s ease;
 }
 
@@ -56,4 +63,5 @@ img {
     display: flex;
     gap: 10px;
     margin-top: 10px;
+    
 }

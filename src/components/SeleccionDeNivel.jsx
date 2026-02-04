@@ -1,7 +1,10 @@
 import "./SeleccionDeNivel.css";
 import levels from "../data/levels";
+import { useNavigate } from "react-router-dom";
 
 const SeleccionDeNivel = ({ seleccionarNivel }) => {
+  const navigate = useNavigate();
+
   return (
     <>
       <h2>Seleccion de Nivel</h2>
@@ -15,7 +18,10 @@ const SeleccionDeNivel = ({ seleccionarNivel }) => {
               src={nivel.imagen}
               alt={`Nivel ${nivel.id}`}
               className="imagenNivel"
-              onClick={() => seleccionarNivel(nivel.id - 1)}
+              onClick={() => {
+                seleccionarNivel(nivel.id - 1);
+                navigate('/nivel');
+              }}
             />
           </div>
         ))}

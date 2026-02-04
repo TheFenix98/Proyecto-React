@@ -6,6 +6,7 @@ import SeleccionDeNivel from "./components/SeleccionDeNivel.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import "./App.css";
+import {Routes, Route} from 'react-router-dom';
 
 
 function App() {
@@ -14,24 +15,29 @@ function App() {
   const [nivelActual, setNivelActual] = useState(0);
   const [respuestaUsuario, setRespuestaUsuario] = useState("");
   const [pistaActual, setPistaActual] = useState(0);
+  const [imagenDesbloqueada, setImagenDesbloqueada] = useState(false);
 
   const empezarJuego = () => {
     setPantalla("nivel");
     setNivelActual(0);
     setRespuestaUsuario("");
     setPistaActual(0);
+    setImagenDesbloqueada(false);
   };
 
   const comprobarRespuesta = () => {
   if (respuestaUsuario.toUpperCase() === niveles[nivelActual].respuesta) {
+    setImagenDesbloqueada(true);
 
-    Swal.fire({
+    setTimeout(() => {
+      Swal.fire({
       title: '¡Respuesta Correcta!',
       text: '¡Has acertado la respuesta!',
       icon: 'success',
       confirmButtonText: 'Continuar'
     },
-    setPistaActual(0)
+    setPistaActual(0),
+    setImagenDesbloqueada(false)
     
   
   ).then(() => {
@@ -53,10 +59,14 @@ function App() {
       }
 
     });
+      
+    }, 700); // Retraso de 700 ms para mostrar la imagen desbloqueada
+  
 
   } else {
     Swal.fire("Incorrecto", "Respuesta incorrecta", "error");
     setRespuestaUsuario("");
+    setImagenDesbloqueada(false);
   }
 };
 
@@ -66,51 +76,38 @@ function App() {
       setPistaActual(pistaActual + 1);
   };
   }
-  const seleccionarNivel = (index) => {
-    setNivelActual(index);
-    setPantalla("nivel");
-    setRespuestaUsuario("");
-    setPistaActual(0);
-  };
 
-  const irSeleccionNivel = () => {
-    setPantalla("seleccion");
-  }
 
   return (
+    
+  <Routes>
 
-  <div>
+    <Route path="/" element={<Menu />} />
 
-    {pantalla === "menu" && (
-      <div className="fondo-menu">
-        <Menu
-          empezarJuego={empezarJuego}
-          irASeleccionNivel={irSeleccionNivel}
-        />
-      </div>
-    )}
-
-    {pantalla === "nivel" && (
-      <div className="fondo-nivel">
-        <Nivel
-          nivelActual={nivelActual}
-          niveles={niveles}
-          respuestaUsuario={respuestaUsuario}
-          setRespuestaUsuario={setRespuestaUsuario}
-          comprobarRespuesta={comprobarRespuesta}
-          pistaActual={pistaActual}
-          verPista={verPista}
-        />
-      </div>
-    )}
-
-    {pantalla === "seleccion" && (
-      <div className="fondo-seleccion">
-        <SeleccionDeNivel seleccionarNivel={seleccionarNivel} />
-      </div>
-    )}
-
-  </div>
+    <Route path="/nivel/" element={
+      <Nivel 
+        nivelActual={nivelActual}
+        niveles={niveles}
+        respuestaUsuario={respuestaUsuario}
+        setRespuestaUsuario={setRespuestaUsuario}
+        comprobarRespuesta={comprobarRespuesta}
+        pistaActual={pistaActual}
+        verPista={verPista}
+        imagenDesbloqueada={imagenDesbloqueada}
+      />
+    }/>
+    <Route path="/seleccion" element={
+      <SeleccionDeNivel 
+        seleccionarNivel={(nivel) => {
+          setNivelActual(nivel);
+          setPantalla("nivel");
+          setRespuestaUsuario("");
+          setPistaActual(0);
+          setImagenDesbloqueada(false);
+        }} 
+      />
+    }/>
+  </Routes>
 );
 
   

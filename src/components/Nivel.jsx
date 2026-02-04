@@ -1,7 +1,12 @@
 import { Button } from "react-bootstrap";
 import "./Nivel.css";
+import { useNavigate } from "react-router-dom";
 
-const Nivel = ({ nivelActual, niveles, respuestaUsuario, setRespuestaUsuario, comprobarRespuesta, pistaActual, verPista, setPantalla, mostrarPista }) => {
+
+
+const Nivel = ({ nivelActual, niveles, respuestaUsuario, setRespuestaUsuario, comprobarRespuesta, pistaActual, verPista,  mostrarPista, imagenDesbloqueada}) => {
+    const navigate = useNavigate();
+
     return (
         <div className={`granContenedorNivel ${mostrarPista ? "con-pista" : "sin-pista"}`}>
 
@@ -13,6 +18,7 @@ const Nivel = ({ nivelActual, niveles, respuestaUsuario, setRespuestaUsuario, co
     <img
       src={niveles[nivelActual].imagen}
       alt="Imagen del nivel"
+      className={imagenDesbloqueada ? "imagen-nivel-correcta" : "imagen-nivel"}
     />
 
     <input
@@ -37,7 +43,7 @@ const Nivel = ({ nivelActual, niveles, respuestaUsuario, setRespuestaUsuario, co
       </Button>
     </div>
 
-    <Button onClick={() => setPantalla("menu")}>
+    <Button onClick={() => navigate('/')} variant="danger" className="btn-volver-menu">
       Volver al Menú
     </Button>
 
