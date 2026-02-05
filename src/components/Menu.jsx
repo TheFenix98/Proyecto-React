@@ -18,7 +18,7 @@ const testAlert = () => {
     <div className="contenedorMenu">
       <h1 className='titulo'>Juego Pelis</h1>
 
-      <button className= "botones btnJugar" onClick={() => {navigate('/nivel');}}>
+      <button className= "botones btnJugar" onClick={() => {navigate('/nivel/0');}}>
         Jugar
       </button>
 

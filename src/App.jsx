@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import "./App.css";
 import {Routes, Route} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
   const [nivelActual, setNivelActual] = useState(0);
   const [respuestaUsuario, setRespuestaUsuario] = useState("");
   const [pistaActual, setPistaActual] = useState(0);
-  const [imagenDesbloqueada, setImagenDesbloqueada] = useState(false);
+  
 
   const empezarJuego = () => {
     setPantalla("nivel");
@@ -56,6 +57,7 @@ function App() {
 
         setPantalla("menu");
         setNivelActual(0);
+        
       }
 
     });
@@ -84,18 +86,21 @@ function App() {
 
     <Route path="/" element={<Menu />} />
 
-    <Route path="/nivel/" element={
-      <Nivel 
-        nivelActual={nivelActual}
-        niveles={niveles}
-        respuestaUsuario={respuestaUsuario}
-        setRespuestaUsuario={setRespuestaUsuario}
-        comprobarRespuesta={comprobarRespuesta}
-        pistaActual={pistaActual}
-        verPista={verPista}
-        imagenDesbloqueada={imagenDesbloqueada}
-      />
-    }/>
+    <Route
+    path="/nivel/:nivelActual"
+    element={
+    <Nivel
+      niveles={niveles}
+      respuestaUsuario={respuestaUsuario}
+      setRespuestaUsuario={setRespuestaUsuario}
+      comprobarRespuesta={comprobarRespuesta}
+      pistaActual={pistaActual}
+      verPista={verPista}
+      nivelIndex={nivelActual}
+    />
+  }
+/>
+
     <Route path="/seleccion" element={
       <SeleccionDeNivel 
         seleccionarNivel={(nivel) => {
