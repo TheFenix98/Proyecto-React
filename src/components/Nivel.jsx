@@ -1,8 +1,10 @@
 import { Button } from "react-bootstrap";
 import "./Nivel.css";
+import niveles from "../data/levels";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useState } from "react";
+
 
 const Nivel = ({
   niveles,
@@ -19,7 +21,7 @@ const Nivel = ({
   const pasarAlSiguienteNivel = () => {
     const siguienteNivel = nivelIndex + 1;
     if (siguienteNivel < niveles.length) {
-      navigate(`/nivel/${siguienteNivel}`);
+      navigate(`/nivel/${siguienteNivel }`);
     } else {
       navigate("/");
     }
@@ -77,17 +79,25 @@ const Nivel = ({
 
   const nivel = niveles[nivelIndex];
 
+  
+if (nivel.tipo == "Pelicula") {
+  nivel.id=nivel.id - 10;
+}
+
   return (
     <div className={`granContenedorNivel ${mostrarPista ? "con-pista" : "sin-pista"}`}>
 
       <div className="contenedorNivel">
 
-        <h2>Nivel {nivelIndex + 1}</h2>
+        <h2>Nivel {nivel.id}</h2>
 
         <img
           src={nivel.imagen}
           alt="Imagen del nivel"
           className={imagenDesbloqueada ? "imagen-nivel-correcta" : "imagen-nivel"}
+          draggable="false"
+          onDragStart={(e) => e.preventDefault()}
+          onContextMenu={(e) => e.preventDefault()}
         />
 
         <input

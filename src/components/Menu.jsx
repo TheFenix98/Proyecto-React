@@ -22,7 +22,7 @@ const testAlert = () => {
         Jugar
       </button>
 
-      <button className='botones btnSeleccionarNivel' onClick={() => {navigate('/seleccion');}}>
+      <button className='botones btnSeleccionarNivel' onClick={() => {navigate('/menuSeleccion');}}>
         Seleccionar Nivel
       </button>
 

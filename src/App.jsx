@@ -2,12 +2,14 @@ import { useState } from "react";
 import niveles from "./data/levels";
 import Menu from "./components/Menu.jsx";
 import Nivel from "./components/Nivel.jsx";
-import SeleccionDeNivel from "./components/SeleccionDeNivel.jsx";
+import MenuSeleccion from "./components/MenuSeleccion.jsx";
+import SeleccionPeliculas from "./components/SeleccionPeliculas.jsx";
+import SeleccionSeries from "./components/SeleccionSeries.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Swal from "sweetalert2";
 import "./App.css";
 import {Routes, Route} from 'react-router-dom';
-import { useNavigate } from "react-router-dom";
+
 
 
 function App() {
@@ -101,18 +103,33 @@ function App() {
   }
 />
 
-    <Route path="/seleccion" element={
-      <SeleccionDeNivel 
+    <Route path="/seleccionPeliculas" element={
+      <SeleccionPeliculas 
         seleccionarNivel={(nivel) => {
           setNivelActual(nivel);
           setPantalla("nivel");
           setRespuestaUsuario("");
           setPistaActual(0);
-          setImagenDesbloqueada(false);
         }} 
       />
     }/>
+
+    <Route path="/seleccionSeries" element={
+      <SeleccionSeries 
+        seleccionarNivel={(nivel) => {
+          setNivelActual(nivel);
+          setPantalla("nivel");
+          setRespuestaUsuario("");
+          setPistaActual(0);
+        }} 
+      />
+    }/>
+
+    <Route path="/menuSeleccion" element={
+      <MenuSeleccion />
+    }/>
   </Routes>
+  
 );
 
   
