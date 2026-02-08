@@ -4,15 +4,17 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    
     gap: 20px;
+    background-image: url(/fondo-juego.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 .titulo {
     font-size: 3rem;
-    margin-top: 40px;
+    margin-top: 8.7rem;
     margin-bottom: 20px;
-    color: #ff5733;
+    color: #ec2b1d;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
@@ -23,7 +25,7 @@
     font-size: 1.2rem;
     border-radius: 50px;
     padding: 10px 0;
-    background: #ff914d;
+    background: #c10e01;
     transition: background-color 0.3s, transform 0.2s;
 }
 .botones:hover {

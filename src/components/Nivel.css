@@ -65,3 +65,17 @@
     margin-top: 10px;
     
 }
+
+input[type="text"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    border: 1px solid #e80e0e;
+    } 
+
+input[type="text"]:focus {
+    outline: none;
+    border: 2px solid #e80e0e;
+    box-shadow: 0 0 5px rgba(232, 14, 14, 0.5);
+}

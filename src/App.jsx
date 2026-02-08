@@ -5,76 +5,17 @@ import Nivel from "./components/Nivel.jsx";
 import MenuSeleccion from "./components/MenuSeleccion.jsx";
 import SeleccionPeliculas from "./components/SeleccionPeliculas.jsx";
 import SeleccionSeries from "./components/SeleccionSeries.jsx";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Swal from "sweetalert2";
 import "./App.css";
 import {Routes, Route} from 'react-router-dom';
 
 
 
-function App() {
 
-  const [pantalla, setPantalla] = useState("menu");
+function App() {
   const [nivelActual, setNivelActual] = useState(0);
   const [respuestaUsuario, setRespuestaUsuario] = useState("");
   const [pistaActual, setPistaActual] = useState(0);
   
-
-  const empezarJuego = () => {
-    setPantalla("nivel");
-    setNivelActual(0);
-    setRespuestaUsuario("");
-    setPistaActual(0);
-    setImagenDesbloqueada(false);
-  };
-
-  const comprobarRespuesta = () => {
-  if (respuestaUsuario.toUpperCase() === niveles[nivelActual].respuesta) {
-    setImagenDesbloqueada(true);
-
-    setTimeout(() => {
-      Swal.fire({
-      title: '¡Respuesta Correcta!',
-      text: '¡Has acertado la respuesta!',
-      icon: 'success',
-      confirmButtonText: 'Continuar'
-    },
-    setPistaActual(0),
-    setImagenDesbloqueada(false)
-    
-  
-  ).then(() => {
-
-      if (nivelActual + 1 < niveles.length) {
-        setNivelActual(nivelActual + 1);
-        setRespuestaUsuario("");
-      } else {
-
-        Swal.fire({
-          title: '¡Felicidades!',
-          text: '¡Has completado todos los niveles!',
-          icon: 'success',
-          confirmButtonText: 'Volver al Menú'
-        });
-
-        setPantalla("menu");
-        setNivelActual(0);
-        
-      }
-
-    });
-      
-    }, 700); // Retraso de 700 ms para mostrar la imagen desbloqueada
-  
-
-  } else {
-    Swal.fire("Incorrecto", "Respuesta incorrecta", "error");
-    setRespuestaUsuario("");
-    setImagenDesbloqueada(false);
-  }
-};
-
-
   const verPista = () => {
     if (pistaActual < 3) {
       setPistaActual(pistaActual + 1);
@@ -84,6 +25,7 @@ function App() {
 
   return (
     
+  <>
   <Routes>
 
     <Route path="/" element={<Menu />} />
@@ -95,10 +37,11 @@ function App() {
       niveles={niveles}
       respuestaUsuario={respuestaUsuario}
       setRespuestaUsuario={setRespuestaUsuario}
-      comprobarRespuesta={comprobarRespuesta}
       pistaActual={pistaActual}
       verPista={verPista}
       nivelIndex={nivelActual}
+      mostrarPista={pistaActual > 0}
+      setPistaActual={setPistaActual}
     />
   }
 />
@@ -129,7 +72,7 @@ function App() {
       <MenuSeleccion />
     }/>
   </Routes>
-  
+</>
 );
 
   

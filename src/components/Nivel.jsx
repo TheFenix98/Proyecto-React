@@ -12,7 +12,8 @@ const Nivel = ({
   setRespuestaUsuario,
   pistaActual,
   verPista,
-  mostrarPista
+  mostrarPista,
+  setPistaActual,
 }) => {
 
   const navigate = useNavigate();
@@ -29,10 +30,6 @@ const Nivel = ({
 
   const [imagenDesbloqueada, setImagenDesbloqueada] = useState(false);
 
-  
-
-  
-
   const handleRespuestaCorrecta = () => {
     const esCorrecta = respuestaUsuario.toUpperCase() === niveles[nivelIndex].respuesta;
     if (esCorrecta) { 
@@ -47,8 +44,9 @@ const Nivel = ({
           setRespuestaUsuario("");
           pasarAlSiguienteNivel();
           setImagenDesbloqueada(false);
+          setPistaActual(0);
         });
-      }, 500);
+      }, 700);
     } else {
       Swal.fire({
         title: 'Respuesta Incorrecta',
@@ -89,7 +87,7 @@ if (nivel.tipo == "Pelicula") {
 
       <div className="contenedorNivel">
 
-        <h2>Nivel {nivel.id}</h2>
+        <h2>{nivel.tipo}s - Nivel {nivel.id}</h2>
 
         <img
           src={nivel.imagen}
@@ -101,6 +99,7 @@ if (nivel.tipo == "Pelicula") {
         />
 
         <input
+          className="input-nivel"
           type="text"
           value={respuestaUsuario}
           onChange={(e) => setRespuestaUsuario(e.target.value)}

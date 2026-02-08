@@ -1,6 +1,6 @@
 import "./SeleccionDeNivel.css";
 import levels from "../data/levels";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, } from "react-router-dom";
 
 const SeleccionSeries = ({ seleccionarNivel }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ const SeleccionSeries = ({ seleccionarNivel }) => {
   });
 
   return (
-    <>
+    <div className="contenedorSeleccionDeNivel">
       <h2 className="tituloSeleccionDeNivel">Adivina la Serie</h2>
 
       <div className="contenedorNiveles">
@@ -37,7 +37,7 @@ const SeleccionSeries = ({ seleccionarNivel }) => {
           </div>
         ))}
       </div>
-    </>
+    </div >
   );
 };
 
