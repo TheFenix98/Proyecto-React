@@ -79,3 +79,43 @@ input[type="text"]:focus {
     border: 2px solid #e80e0e;
     box-shadow: 0 0 5px rgba(232, 14, 14, 0.5);
 }
+
+/* 📱 MOBILE / PANTALLAS CHICAS */
+@media (max-width: 768px) {
+
+  /* Siempre columna en mobile */
+  .granContenedorNivel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Contenedor principal */
+  .contenedorNivel {
+    width: 100%;
+  }
+
+  /* Imagen arriba */
+  .imagen-nivel,
+  .imagen-nivel-correcta {
+    order: 1;
+  }
+
+  /* Pistas debajo de la imagen */
+  .pistas-nivel {
+    order: 2;
+    width: 90%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    height: auto;
+  }
+
+  /* Input y botones debajo */
+  input[type="text"] {
+    order: 3;
+  }
+
+  .botones-nivel {
+    order: 4;
+  }
+}
