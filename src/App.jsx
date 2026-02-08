@@ -24,7 +24,7 @@ function App() {
 
 
   return (
-    
+
   <>
   <Routes>
 
@@ -50,7 +50,6 @@ function App() {
       <SeleccionPeliculas 
         seleccionarNivel={(nivel) => {
           setNivelActual(nivel);
-          setPantalla("nivel");
           setRespuestaUsuario("");
           setPistaActual(0);
         }} 
@@ -61,7 +60,6 @@ function App() {
       <SeleccionSeries 
         seleccionarNivel={(nivel) => {
           setNivelActual(nivel);
-          setPantalla("nivel");
           setRespuestaUsuario("");
           setPistaActual(0);
         }} 
